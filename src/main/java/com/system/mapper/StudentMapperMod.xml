@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.system.mapper.StudentMapperMod">
+
+    <resultMap id="StudentAndSelectCourseResultMap" type="StudentCustom">
+
+        <id column="userID" property="userid"/>
+        <result column="userName" property="username" />
+        <result column="sex" property="sex" />
+        <result column="birthYear" property="birthyear" />
+        <result column="grade" property="grade" />
+        <result column="collegeID" property="collegeid" />
+
+        <collection property="selectedCourseList" ofType="SelectedCourseCustom">
+            <result column="courseID" property="courseid"/>
+            <result column="studentID" property="studentid"/>
+            <result column="mark" property="mark"/>
+            <association property="courseCustom" javaType="CourseCustom">
+                <id column="courseID" property="courseid"/>
+                <result column="courseName" property="coursename"/>
+                <result column="teacherID" property="teacherid"/>
+                <result column="courseTime" property="coursetime"/>
+                <result column="classRoom" property="classroom"/>
+                <result column="courseWeek" property="courseweek"/>
+                <result column="courseType" property="coursetype"/>
+                <result column="collegeID" property="collegeid"/>
+                <result column="score" property="score"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="findByPaging" parameterType="PagingVO" resultType="StudentCustom">
+        select student.*, college.collegeName
+        from student, college
+        WHERE student.collegeID = college.collegeID
+        limit #{toPageNo}, #{pageSize}
+    </select>
+
+    <select id="findStudentAndSelectCourseListById" parameterType="int" resultMap="StudentAndSelectCourseResultMap">
+        SELECT
+          student.*,
+          selectedcourse.*,
+          course.*
+        FROM
+          student,
+          selectedcourse,
+          course
+        WHERE
+          student.userID = #{id}
+        AND
+          student.userID = selectedcourse.studentID
+        AND
+          selectedcourse.courseID = course.courseID
+    </select>
+
+</mapper>

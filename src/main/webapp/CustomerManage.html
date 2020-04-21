@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG Shape Overlays | Demo 1</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400|Montserrat:700" rel="stylesheet">
+    <script type="text/javascript" src="web/js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="main_css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="main_css/demo.css" />
+
+    <title>Customer Manage</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+
+    <style>
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border: 16px solid lightblue;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+        }
+
+        #wrapper{
+            width:960px;
+            margin:0 auto;
+            margin-bottom:15px;
+        }
+
+        .main2{
+            width:1200px;
+            background-color:white;
+            border-radius:8px;
+            float:left;
+            padding:20px;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        //弹出隐藏层
+        function ShowDiv(show_div,bg_div){
+            document.getElementById(show_div).style.display='block';
+            document.getElementById(bg_div).style.display='block' ;
+            var bgdiv = document.getElementById(bg_div);
+            bgdiv.style.width = document.body.scrollWidth;
+// bgdiv.style.height = $(document).height();
+            $("#"+bg_div).height($(document).height());
+        };
+        //关闭弹出层
+        function CloseDiv(show_div,bg_div)
+        {
+            document.getElementById(show_div).style.display='none';
+            document.getElementById(bg_div).style.display='none';
+
+            location.reload();
+        };
+    </script>
+
+    <!--    <script>document.documentElement.className = 'js';</script>-->
+    <script>
+        var navhtml='';
+        function getParams(key) {
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        };
+        window.onload=function () {
+            alert("begin");
+            var auth=getParams("auth");
+
+            alert("begin");
+            for(var i=0;i<auth.split(",").length;i++){
+                if(auth.split(",")[i]!=null){
+                    var mynav=document.getElementById("js-nav");
+                    var framea = document.createElement("a");
+                    var framespan = document.createElement("span");
+                    framespan.innerHTML=auth.split(",")[i];
+                    framea.setAttribute("class","demo");
+                    framea.setAttribute("href","index2.html");
+                    framea.appendChild(framespan);
+
+                    mynav.appendChild(framea);
+                }
+            }
+            alert(navhtml);
+        };
+
+    </script>
+</head>
+<body class="demo-1">
+
+<main class="main main--demo-1">
+
+    <div class="content content--fixed">
+
+        <nav id="js-nav" class="demos">
+
+            <a class="demo demo--current" href="main.html"><span>首页</span></a>
+
+        </nav>
+
+    </div>
+
+    <div class="content content--demo-1">
+        <div class="hamburger js-hover">
+            <div class="hamburger__line hamburger__line--01">
+                <div class="hamburger__line-in hamburger__line-in--01"></div>
+            </div>
+            <div class="hamburger__line hamburger__line--02">
+                <div class="hamburger__line-in hamburger__line-in--02"></div>
+            </div>
+            <div class="hamburger__line hamburger__line--03">
+                <div class="hamburger__line-in hamburger__line-in--03"></div>
+            </div>
+            <div class="hamburger__line hamburger__line--cross01">
+                <div class="hamburger__line-in hamburger__line-in--cross01"></div>
+            </div>
+            <div class="hamburger__line hamburger__line--cross02">
+                <div class="hamburger__line-in hamburger__line-in--cross02"></div>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div class="main2">
+                <table id="table" class="display">
+                    <thead>
+                    <tr>
+                        <th>customerId</th>
+                        <th>customerName</th>
+                        <th>customerAddr</th>
+                        <th>customerTel</th>
+                        <th>customerFax</th>
+                        <th>customerCode</th>
+                        <th>customerBank</th>
+                        <th>customerAccount</th>
+                        <th>operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <input type="button" value="新增客户" onclick="ShowDiv('AddDiv','fade')">
+
+                <div id="fade" class="black_overlay">
+                </div>
+                <div id="AddDiv" class="white_content">
+
+                    <form action="" method="post">
+                        <fieldset>
+                            <legend align="left">新增客户</legend>
+                            客户名称：<input type="text" id="cName" maxlength="25" size="10"/><br>
+                            电  话：<input type="text" id="cTel" maxlength="25" size="10"/><br>
+                            地  址：<input type="text" id="cAddr" maxlength="25" size="10"/><br>
+                            传  真：<input type="text" id="cFax" maxlength="25" size="10"/><br>
+                            邮  箱：<input type="text" id="cCode" maxlength="25" size="10"/><br>
+                            银行名称：<input type="text" id="cBank" maxlength="25" size="10"/><br>
+                            银行账号：<input type="text" id="cAccount" maxlength="25" size="10"/><br>
+                            备  注：<input type="text" id="cMore" maxlength="25" size="10"/><br>
+                            <input type="button" value="提交" onclick="add()">
+                            <input type="reset" value="重置">
+                        </fieldset>
+                    </form>
+
+                    <div style="text-align: right; cursor: default; height: 40px;" id="move">
+                        <input type="button" value="关闭" onclick="CloseDiv('AddDiv','fade')">
+                    </div>
+                </div>
+
+                <div id="UpdateDiv" class="white_content">
+
+                    <form action="" method="post">
+                        <fieldset>
+                            <legend align="left">修改客户</legend>
+                            客户名称：<span id="cName2"></span><br>
+                            电  话：<input type="text" id="cTel2" maxlength="25" size="10"/><br>
+                            地  址：<input type="text" id="cAddr2" maxlength="25" size="10"/><br>
+                            传  真：<input type="text" id="cFax2" maxlength="25" size="10"/><br>
+                            邮  箱：<input type="text" id="cCode2" maxlength="25" size="10"/><br>
+                            银行名称：<input type="text" id="cBank2" maxlength="25" size="10"/><br>
+                            银行账号：<input type="text" id="cAccount2" maxlength="25" size="10"/><br>
+                            备  注：<input type="text" id="cMore2" maxlength="25" size="10"/><br>
+                            <input type="button" value="提交" onclick="update()">
+                            <input type="reset" value="重置">
+                        </fieldset>
+                    </form>
+
+                    <div style="text-align: right; cursor: default; height: 40px;" id="updatemove">
+                        <input type="button" value="关闭" onclick="CloseDiv('UpdateDiv','fade')">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="global-menu">
+            <div class="global-menu__wrap">
+                <a class="global-menu__item global-menu__item--demo-1" href="#">Login</a>
+                <a class="global-menu__item global-menu__item--demo-1" href="#">Register</a>
+            </div>
+        </div>
+        <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="shape-overlays__path"></path>
+            <path class="shape-overlays__path"></path>
+            <path class="shape-overlays__path"></path>
+        </svg>
+    </div>
+
+</main>
+
+<script src="main_js/demo.js"></script>
+<script src="main_js/easings.js"></script>
+<script src="main_js/demo1.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#table').dataTable();
+    } );
+</script>
+
+<script type="text/javascript">
+    function toUpdatePage(SelectedUsername){
+        // alert("toUpdatePage1");
+        // getSelectedContent();
+        var username = SelectedUsername;
+        alert(username);
+        window.location.href="UpdateCustomer.html?values="+username;
+    }
+
+    function toAddPage(){
+        window.location.href="AddCustomer.html";
+    }
+
+    function add(){
+        alert("adding...")
+        var customerName = document.getElementById("cName").value;
+        var customerTel = document.getElementById("cTel").value;
+        var customerAddr = document.getElementById("cAddr").value;
+        var customerFax = document.getElementById("cFax").value;
+        var customerCode = document.getElementById("cCode").value;
+        var customerBank = document.getElementById("cBank").value;
+        var customerAccount = document.getElementById("cAccount").value;
+
+        var req = {
+            "customerName":customerName,
+            "customerAddr":customerAddr,
+            "customerTel":customerTel,
+            "customerFax":customerFax,
+            "customerCode":customerCode,
+            "customerBank":customerBank,
+            "customerAccount":customerAccount
+        };
+        alert("mmm");
+
+        $.ajax({
+            type: 'POST',
+            url: "Customer/add",
+            data: JSON.stringify(req),
+            contentType: 'application/json; charset=UTF-8',
+            dataType:"text",
+            success: function (data) {
+                alert("Successfully Returned Data!");
+                alert(data);
+
+                document.getElementById("cName").value = "";
+                document.getElementById("cTel").value = "";
+                document.getElementById("cAddr").value = "";
+                document.getElementById("cFax").value = "";
+                document.getElementById("cCode").value = "";
+                document.getElementById("cBank").value = "";
+                document.getElementById("cAccount").value = "";
+                document.getElementById("cMore").value = "";
+            },
+            error: function (data) {
+                alert("Failed in Returning Data!");
+                alert(data);
+            }
+        });
+    }
+
+    function update(){
+        alert("updating...");
+        var customerName = document.getElementById("cName2").innerHTML;
+        var customerTel = document.getElementById("cTel2").value;
+        var customerAddr = document.getElementById("cAddr2").value;
+        var customerFax = document.getElementById("cFax2").value;
+        var customerCode = document.getElementById("cCode2").value;
+        var customerBank = document.getElementById("cBank2").value;
+        var customerAccount = document.getElementById("cAccount2").value;
+
+        var req = {
+            "customerName":customerName,
+            "customerAddr":customerAddr,
+            "customerTel":customerTel,
+            "customerFax":customerFax,
+            "customerCode":customerCode,
+            "customerBank":customerBank,
+            "customerAccount":customerAccount
+        };
+        alert("mmm");
+
+        $.ajax({
+            type: 'POST',
+            url: "Customer/update",
+            data: JSON.stringify(req),
+            contentType: 'application/json; charset=UTF-8',
+            dataType:"text",
+            success: function (data) {
+                alert("Successfully Returned Data!");
+                alert(data);
+            },
+            error: function (data) {
+                alert("Failed in Returning Data!");
+                alert(data);
+            }
+        });
+    }
+
+    $(function(){
+        $("#table").on("click", ":button", function(event){
+            if($(this).val()=="修改") {
+                alert($(this).closest("tr").find("td").eq(1).text());
+                ShowDiv('UpdateDiv','fade');
+                document.getElementById("cName2").innerHTML = $(this).closest("tr").find("td").eq(1).text();
+                document.getElementById("cTel2").value = $(this).closest("tr").find("td").eq(3).text();
+                document.getElementById("cAddr2").value = $(this).closest("tr").find("td").eq(2).text();
+                document.getElementById("cFax2").value = $(this).closest("tr").find("td").eq(4).text();
+                document.getElementById("cCode2").value = $(this).closest("tr").find("td").eq(5).text();
+                document.getElementById("cBank2").value = $(this).closest("tr").find("td").eq(6).text();
+                document.getElementById("cAccount2").value = $(this).closest("tr").find("td").eq(7).text();
+                // window.location.href = "UpdateCustomer.html?values=" + $(this).closest("tr").find("td").eq(1).text();
+            }else if($(this).val()=="删除"){
+                alert("进入删除按钮");
+                var customerId = $(this).closest("tr").find("td").eq(0).text();
+                var customerName = $(this).closest("tr").find("td").eq(1).text();
+                var customerAddr = $(this).closest("tr").find("td").eq(2).text();
+                var customerTel = $(this).closest("tr").find("td").eq(3).text();
+                var customerFax = $(this).closest("tr").find("td").eq(4).text();
+                var customerCode = $(this).closest("tr").find("td").eq(5).text();
+                var customerBank = $(this).closest("tr").find("td").eq(6).text();
+                var customerAccount = $(this).closest("tr").find("td").eq(7).text();
+                var req={
+                    "customerId":customerId,
+                    "customerName":customerName,
+                    "customerAddr":customerAddr,
+                    "customerTel":customerTel,
+                    "customerFax":customerFax,
+                    "customerCode":customerCode,
+                    "customerBank":customerBank,
+                    "customerAccount":customerAccount
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: "Customer/delete",
+                    data: JSON.stringify(req),
+                    contentType: 'application/json; charset=UTF-8',
+                    dataType:"text",
+                    success: function (data) {
+                        alert("success");
+                        alert(data);
+                        var tables=$('#table').DataTable();
+                        tables.row().remove();//删除这行的数据
+                        tables.draw(false);
+                        // window.location.reload();
+                    },
+                    error: function (data) {
+                        alert("error");
+                        alert(data);
+                    }
+                });
+            }
+        });
+    });
+
+    window.onload = function (){
+        var req = {
+            "listRequest":"list"
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: "Customer/list",
+            data: JSON.stringify(req),
+            contentType: 'application/json; charset=UTF-8',
+            dataType:"json",
+            success: function (data) {
+                alert("success");
+                alert(data);
+
+                $('#table').dataTable().fnDestroy();
+                $('#table').DataTable( {
+                    data: data,
+                    //使用对象数组，一定要配置columns，告诉 DataTables 每列对应的属性
+                    //data 这里是固定不变的，name，position，salary，office 为你数据里对应的属性
+                    columns: [
+                        { data: 'customerId' },
+                        { data: 'customerName' },
+                        { data: 'customerAddr' },
+                        { data: 'customerTel' },
+                        { data: 'customerFax' },
+                        { data: 'customerCode' },
+                        { data: 'customerBank' },
+                        { data: 'customerAccount' },
+                        { data: null }
+                    ],
+                    columnDefs:[{
+                        targets: 8,
+                        render: function (data, type, row, meta) {
+                            return '<input type="button" class="btn btn-danger btn-block" value="删除"></input>' +
+                                '<input type="button" class="btn btn-danger btn-block" value="修改"></input>';
+                        }
+                    }, { "orderable": false, "targets": 8 }
+                    ]
+                } );
+            },
+            error: function (data) {
+                alert("error");
+                alert(data);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
