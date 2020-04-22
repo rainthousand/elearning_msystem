@@ -4,7 +4,7 @@ import com.system.mapper.CollegeMapper;
 import com.system.mapper.CourseMapper;
 import com.system.mapper.CourseMapperMod;
 import com.system.mapper.SelectedcourseMapper;
-import com.system.po.*;
+import com.system.entity.*;
 import com.system.service.CourseService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

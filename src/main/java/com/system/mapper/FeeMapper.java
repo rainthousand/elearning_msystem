@@ -1,7 +1,7 @@
 package com.system.mapper;
 
-import com.system.po.Fee;
-import com.system.po.FeeExample;
+import com.system.entity.Fee;
+import com.system.entity.FeeExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

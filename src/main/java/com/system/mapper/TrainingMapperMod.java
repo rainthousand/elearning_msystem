@@ -1,7 +1,7 @@
 package com.system.mapper;
 
-import com.system.po.PagingVO;
-import com.system.po.TrainingCustom;
+import com.system.entity.PagingVO;
+import com.system.entity.TrainingCustom;
 
 import java.util.List;
 

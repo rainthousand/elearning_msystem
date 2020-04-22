@@ -1,8 +1,8 @@
-package com.system.po;
+package com.system.entity;
 
 import java.util.Date;
 
-public class Teacher {
+public class Student {
     private Integer userid;
 
     private String username;
@@ -10,10 +10,6 @@ public class Teacher {
     private String sex;
 
     private Date birthyear;
-
-    private String degree;
-
-    private String title;
 
     private Date grade;
 
@@ -49,22 +45,6 @@ public class Teacher {
 
     public void setBirthyear(Date birthyear) {
         this.birthyear = birthyear;
-    }
-
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree == null ? null : degree.trim();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
     }
 
     public Date getGrade() {

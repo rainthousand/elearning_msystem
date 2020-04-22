@@ -1,7 +1,7 @@
 package com.system.mapper;
 
-import com.system.po.Teacher;
-import com.system.po.TeacherExample;
+import com.system.entity.Teacher;
+import com.system.entity.TeacherExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

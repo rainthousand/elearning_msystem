@@ -1,6 +1,6 @@
 package com.system.service;
 
-import com.system.po.CourseCustom;
+import com.system.entity.CourseCustom;
 
 import java.util.List;
 

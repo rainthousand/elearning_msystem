@@ -1,7 +1,7 @@
 package com.system.mapper;
 
-import com.system.po.Userlogin;
-import com.system.po.UserloginExample;
+import com.system.entity.Userlogin;
+import com.system.entity.UserloginExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

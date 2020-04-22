@@ -2,7 +2,7 @@ package com.system.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.system.exception.CustomException;
-import com.system.po.*;
+import com.system.entity.*;
 import com.system.service.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -70,6 +70,9 @@ public class StudentController {
         selectedCourseCustom.setCourseid(id);
         selectedCourseCustom.setStudentid(Integer.parseInt(username));
 
+        //        System.out.println("coursesssss::::::::::::::::::::::::::::::");
+        //        System.out.println(JSON.toJSONString(selectedCourseCustom));
+
         SelectedCourseCustom s = selectedCourseService.findOne(selectedCourseCustom);
 
         if (s == null) {
@@ -99,8 +102,8 @@ public class StudentController {
 
             return "redirect:/student/showTrain";
         }
-        System.out.println("id::::::::::::::::::::::::::::::");
-        System.out.println(id);
+//        System.out.println("id::::::::::::::::::::::::::::::");
+//        System.out.println(id);
 
         TrainingExample example = new TrainingExample();
         TrainingExample.Criteria criteria = example.createCriteria();
@@ -108,8 +111,8 @@ public class StudentController {
         List<Training> list = trainingService.selectByExample(example);
 
         Training training = list.get(0);
-        System.out.println("training2222::::::::::::::::::::::::::::::");
-        System.out.println(JSON.toJSONString(training));
+//        System.out.println("training2222::::::::::::::::::::::::::::::");
+//        System.out.println(JSON.toJSONString(training));
 
         model.addAttribute("training", training);
 

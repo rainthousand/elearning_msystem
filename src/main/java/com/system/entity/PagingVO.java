@@ -1,4 +1,4 @@
-package com.system.po;
+package com.system.entity;
 
 /**
  *  分页信息 pojo类

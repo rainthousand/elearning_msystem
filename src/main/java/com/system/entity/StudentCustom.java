@@ -1,15 +1,13 @@
-package com.system.po;
+package com.system.entity;
 
 import java.util.List;
 
-/**
- * Student的扩展类
- */
+//extended class of student
 public class StudentCustom extends Student {
-    //所属院系名
+    //college name the student belongs to
     private String collegeName;
 
-    //选课列表
+    //the student course list
     private List<SelectedCourseCustom> selectedCourseList;
 
 

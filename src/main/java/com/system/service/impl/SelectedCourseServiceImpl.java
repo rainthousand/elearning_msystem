@@ -2,14 +2,12 @@ package com.system.service.impl;
 
 import com.system.mapper.SelectedcourseMapper;
 import com.system.mapper.StudentMapper;
-import com.system.po.*;
-import com.system.service.CourseService;
+import com.system.entity.*;
 import com.system.service.SelectedCourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 

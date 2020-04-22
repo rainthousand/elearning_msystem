@@ -2,9 +2,9 @@ package com.system.service.impl;
 
 import com.system.mapper.FeeMapper;
 import com.system.mapper.FeeMapperMod;
-import com.system.po.Fee;
-import com.system.po.FeeExample;
-import com.system.po.PagingVO;
+import com.system.entity.Fee;
+import com.system.entity.FeeExample;
+import com.system.entity.PagingVO;
 import com.system.service.FeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

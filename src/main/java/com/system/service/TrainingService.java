@@ -1,7 +1,7 @@
 package com.system.service;
 
 import org.apache.ibatis.annotations.Param;
-import com.system.po.*;
+import com.system.entity.*;
 import java.util.List;
 
 public interface TrainingService {

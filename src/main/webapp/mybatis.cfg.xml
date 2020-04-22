@@ -4,6 +4,6 @@
 
 <configuration>
     <typeAliases>
-        <package name="com.system.po" />
+        <package name="com.system.entity" />
     </typeAliases>
 </configuration>

@@ -1,4 +1,4 @@
-package com.system.po;
+package com.system.entity;
 
 public class College {
     private Integer collegeid;

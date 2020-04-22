@@ -1,8 +1,7 @@
 package com.system.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.system.exception.CustomException;
-import com.system.po.*;
+import com.system.entity.*;
 import com.system.service.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -149,8 +148,8 @@ public class TeacherController {
         inserttr.setTeaid(Integer.parseInt(username));
         inserttr.setCourseid(tr.getCourseid());
         inserttr.setTrdescription(tr.getTrdescription());
-        System.out.println("trJSON:::::::::::::::::");
-        System.out.println(JSON.toJSONString(tr));
+//        System.out.println("trJSON:::::::::::::::::");
+//        System.out.println(JSON.toJSONString(tr));
 
         trainingService.insert(inserttr);
 
@@ -164,8 +163,8 @@ public class TeacherController {
             
             return "redirect:/teacher/showTrain";
         }
-        System.out.println("id::::::::::::::::::::::::::::::");
-        System.out.println(id);
+//        System.out.println("id::::::::::::::::::::::::::::::");
+//        System.out.println(id);
 
         TrainingExample example = new TrainingExample();
         TrainingExample.Criteria criteria = example.createCriteria();
@@ -173,8 +172,8 @@ public class TeacherController {
         List<Training> list = trainingService.selectByExample(example);
 
         Training training = list.get(0);
-        System.out.println("training2222::::::::::::::::::::::::::::::");
-        System.out.println(JSON.toJSONString(training));
+//        System.out.println("training2222::::::::::::::::::::::::::::::");
+//        System.out.println(JSON.toJSONString(training));
 
         model.addAttribute("training", training);
 
@@ -185,8 +184,8 @@ public class TeacherController {
     @RequestMapping(value = "/editTrain", method = {RequestMethod.POST})
     public String editTrain(Training training) throws Exception {
 
-        System.out.println("update:::::::::::::::::::::");
-        System.out.println(JSON.toJSONString(training));
+//        System.out.println("update:::::::::::::::::::::");
+//        System.out.println(JSON.toJSONString(training));
 
         TrainingExample example = new TrainingExample();
         TrainingExample.Criteria criteria = example.createCriteria();

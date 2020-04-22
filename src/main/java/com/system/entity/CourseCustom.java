@@ -1,11 +1,8 @@
-package com.system.po;
+package com.system.entity;
 
-/**
- * Course扩展类    课程
- */
+//extended class of the Course to add college name
 public class CourseCustom extends Course {
-
-    //所属院系名
+    
     private String collegeName;
 
     public void setcollegeName(String collegeName) {

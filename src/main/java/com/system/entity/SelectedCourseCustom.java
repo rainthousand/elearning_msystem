@@ -1,13 +1,15 @@
-package com.system.po;
+package com.system.entity;
 
 public class SelectedCourseCustom extends Selectedcourse {
-    //新增Student 对象字段
-    private StudentCustom studentCustom;
 
-    //扩展课程信息对象
+    //add a course information
     private CourseCustom courseCustom;
 
-    //判断该学生是否已经完成该课程
+    //add the student who selected the course
+    private StudentCustom studentCustom;
+
+
+    //judge if it's finished
     private Boolean over = false;
 
 

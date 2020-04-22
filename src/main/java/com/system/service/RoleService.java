@@ -1,6 +1,6 @@
 package com.system.service;
 
-import com.system.po.Role;
+import com.system.entity.Role;
 
 /**
  *  Role 权限表Service层

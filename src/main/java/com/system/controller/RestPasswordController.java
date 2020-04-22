@@ -1,7 +1,7 @@
 package com.system.controller;
 
 import com.system.exception.CustomException;
-import com.system.po.Userlogin;
+import com.system.entity.Userlogin;
 import com.system.service.UserloginService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -17,10 +17,14 @@ public class RestPasswordController {
     @Resource(name = "userloginServiceImpl")
     private UserloginService userloginService;
 
+    //reset the password controller(basic version)
     @RequestMapping(value = "/passwordRest", method = {RequestMethod.POST})
     public String passwordRest(String oldPassword, String password1) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         String username = (String) subject.getPrincipal();
+
+        //        System.out.println("user::::::::::::::::::::::::::::::");
+        //        System.out.println(username);
 
         Userlogin userlogin = userloginService.findByName(username);
 

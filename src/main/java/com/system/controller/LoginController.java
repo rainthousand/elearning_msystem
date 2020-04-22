@@ -1,6 +1,6 @@
 package com.system.controller;
 
-import com.system.po.Userlogin;
+import com.system.entity.Userlogin;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -16,8 +16,12 @@ public class LoginController {
         return "../../login";
     }
 
+    // login request handling
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
     public String login(Userlogin userlogin) throws Exception {
+
+        //        System.out.println("user::::::::::::::::::::::::::::::");
+        //        System.out.println(userlogin);
 
         UsernamePasswordToken token = new UsernamePasswordToken(userlogin.getUsername(),
                 userlogin.getPassword());
@@ -25,6 +29,7 @@ public class LoginController {
 
         subject.login(token);
 
+        //different roles go to different paths and pages
         if (subject.hasRole("admin")) {
             return "redirect:/admin/showStudent";
         } else if (subject.hasRole("teacher")) {

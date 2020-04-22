@@ -1,7 +1,6 @@
 package com.system.service;
 
-import com.system.po.SelectedCourseCustom;
-import com.system.po.StudentCustom;
+import com.system.entity.SelectedCourseCustom;
 
 import java.util.List;
 

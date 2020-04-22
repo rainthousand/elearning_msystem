@@ -1,4 +1,4 @@
-package com.system.po;
+package com.system.entity;
 import javax.persistence.Id;
 public class Training {
     /**

@@ -1,6 +1,6 @@
 package com.system.service;
 
-import com.system.po.Fee;
+import com.system.entity.Fee;
 
 import java.util.List;
 

@@ -1,10 +1,9 @@
-package com.system.po;
+package com.system.entity;
 
-/**
- * Userlogin扩展类
- */
+//extended class for Userlogin
 public class UserloginCustom extends Userlogin {
 
+    // add a role observation attribute
     private Role role_ob;
 
     public void setRole(Role role) {

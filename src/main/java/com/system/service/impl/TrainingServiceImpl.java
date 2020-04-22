@@ -3,7 +3,7 @@ package com.system.service.impl;
 import com.system.mapper.SelectedcourseMapper;
 import com.system.mapper.TrainingMapper;
 import com.system.mapper.TrainingMapperMod;
-import com.system.po.*;
+import com.system.entity.*;
 import com.system.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

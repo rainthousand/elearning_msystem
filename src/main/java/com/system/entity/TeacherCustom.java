@@ -1,10 +1,8 @@
-package com.system.po;
+package com.system.entity;
 
-/**
- * teacher扩展类
- */
+//extended class of Teacher
 public class TeacherCustom extends Teacher {
-    //所属院系名
+    //the teacher's college name(String)
     private String collegeName;
 
     public void setcollegeName(String collegeName) {

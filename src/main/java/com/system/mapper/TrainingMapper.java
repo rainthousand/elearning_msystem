@@ -2,8 +2,8 @@ package com.system.mapper;
 
 import java.util.List;
 
-import com.system.po.Training;
-import com.system.po.TrainingExample;
+import com.system.entity.Training;
+import com.system.entity.TrainingExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TrainingMapper {
